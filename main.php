@@ -27,34 +27,40 @@ function clean_input(string $data) : string {
             <!-- Logo goes here -->
         </header>
         <main>
+            <h1>Visitor Feedback</h1>
             <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> 
                   method="post">
                 <label for="name">What is your name?</label>
-                <input type="text" name="name">
+                <input type="text" id="name" name="name">
 
                 <label for="wherefrom">Where are you from?</label>
-                <input type="text" name="wherefrom">
+                <input type="text" id="wherefrom" name="wherefrom">
 
                 <label for="comment">Let us know what you thought of your visit!</label>
-                <textarea name="comment"></textarea>
+                <textarea id="comment" name="comment" rows="4" cols="40"></textarea>
                 <br>
-                <input type="submit" name="submit" value="submit">
+                <input type="submit" name="submit" value="Submit">
             </form>
 
             <section>
                 <h2>Previous feedback</h2>
                 <p>
                 <?php
+
+
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $name = clean_input($_POST["name"]);
                     $wherefrom = clean_input($_POST["wherefrom"]);
                     $comment = clean_input($_POST["comment"]);
                 }
 
-                echo "$name<br>";
-                echo "$wherefrom<br>";
                 echo "$comment<br>";
-
+                if ($name != "") {
+                    echo "$name<br>";
+                }
+                if ($wherefrom != "") {
+                    echo "$wherefrom";
+                }
 
                 ?>
                 </p>
