@@ -4,7 +4,7 @@ $name = "";
 $wherefrom = "";
 $comment = "";
 
-function clean_input(string $data) : string {
+function cleanInput(string $data) : string {
     // Remove whitespace from ends
     $trimmed = trim($data);
     // Remove backslashes to prevent escape characters
@@ -15,20 +15,52 @@ function clean_input(string $data) : string {
     return $sanitised;
 }
 
+$server_name = "localhost";
+$username = "root";
+$password = "";
+$db_name = "museumdb";
+
+$conn = new mysqli($server_name, $username, $password, $db_name);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// $create_table = "
+// IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'museumdb')
+// BEGIN
+//     CREATE TABLE Feedback (
+//     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+//     name VARCHAR(30),
+//     wherefrom VARCHAR(30),
+//     comment VARCHAR(100) NOT NULL,
+//     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+//     )
+// END";
+
+// if ($conn->query($create_table) === TRUE) {
+//     echo "Table Feedback created successfully";
+// } else {
+//     echo "Error creating table: " . $conn->error;
+// }
+
 ?>
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="assets/images/MDMLogo.png" type="image/x-icon">
         <link rel="stylesheet" href="styles/main.css">
         <title>Feedback</title>
     </head>
     <body>
         <header>
-            <!-- Logo goes here -->
+            <img src="assets/images/MDMLogo.png" alt="Motueka District Museum Logo">
         </header>
         <main>
             <h1>Visitor Feedback</h1>
-            <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> 
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" 
                   method="post">
                 <label for="name">What is your name?</label>
                 <input type="text" id="name" name="name">
@@ -49,9 +81,9 @@ function clean_input(string $data) : string {
 
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $name = clean_input($_POST["name"]);
-                    $wherefrom = clean_input($_POST["wherefrom"]);
-                    $comment = clean_input($_POST["comment"]);
+                    $name = cleanInput($_POST["name"]);
+                    $wherefrom = cleanInput($_POST["wherefrom"]);
+                    $comment = cleanInput($_POST["comment"]);
                 }
 
                 echo "$comment<br>";

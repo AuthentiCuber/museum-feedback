@@ -1,18 +1,68 @@
+@font-face {
+    font-family: FuturaLight;
+    src: url(../assets/fonts/futuralight.ttf);
+}
+
+@font-face {
+    font-family: PlayfairDisplay;
+    src: url(../assets/fonts/PlayfairDisplay-VariableFont_wght.ttf);
+}
+
+:root {
+    --header-height: 8rem;
+    /* Brand colours */
+    --orange: #f7a34b;
+    --light-orange: #f8c186;
+    --dark-orange: #d86e3e;
+    --gray: #c1c1c1;
+}
+
 * {
     margin: 0;
+    color: black;
+    font-family: FuturaLight;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+body {
+    background-color: var(--orange);
 }
 
 header {
     width: 100%;
+    height: var(--header-height);
+    background-color: black;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }
 
 h1, h2 {
     margin-top: 2rem;
+    font-weight: bold;
+}
+
+h1 {
+    font-family: PlayfairDisplay;
+    font-variation-settings: "wght" 800;
+    font-size: 57px;
+}
+
+h2 {
+    font-family: FuturaLight;
+    font-size: 25px;
 }
 
 main {
     margin: 0 auto;
     width: 60%;
+}
+
+img {
+    height: calc(var(--header-height) * 0.9);
+    filter: invert();
 }
 
 label {
@@ -25,4 +75,15 @@ input[type=submit] {
     width: 8rem;
     margin-top: 1rem;
     padding: 0.5rem;
+    color: white;
+    background-color: black;
+    border: solid 1px black;
+    cursor: pointer;
+
+    transition: color 400ms ease, background-color 400ms ease;
+}
+
+input[type=submit]:hover {
+    color: black;
+    background-color: white;
 }
