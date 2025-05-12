@@ -76,9 +76,7 @@ if ($conn->connect_error) {
 
             <section>
                 <h2>Previous feedback</h2>
-                <p>
                 <?php
-
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $name = cleanInput($_POST["name"]);
@@ -86,7 +84,11 @@ if ($conn->connect_error) {
                     $comment = cleanInput($_POST["comment"]);
                 }
 
-                echo "$comment<br>";
+                ?>
+                <q><?php echo "$comment";?></q>
+                <br>
+                <?php
+
                 if ($name != "") {
                     echo "$name<br>";
                 }
@@ -95,7 +97,6 @@ if ($conn->connect_error) {
                 }
 
                 ?>
-                </p>
             </section>
         </main>
     </body>
