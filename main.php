@@ -83,6 +83,9 @@ if ($conn->connect_error) {
                     $wherefrom = cleanInput($_POST["wherefrom"]);
                     $comment = cleanInput($_POST["comment"]);
 
+                    $insert = "INSERT INTO Feedback (name, wherefrom, comment) VALUES ('$name', '$wherefrom', '$comment')";
+                    $conn->query($insert);
+                    
                     echo "<q>$comment</q><br>";
                 }
 
