@@ -82,12 +82,9 @@ if ($conn->connect_error) {
                     $name = cleanInput($_POST["name"]);
                     $wherefrom = cleanInput($_POST["wherefrom"]);
                     $comment = cleanInput($_POST["comment"]);
-                }
 
-                ?>
-                <q><?php echo "$comment";?></q>
-                <br>
-                <?php
+                    echo "<q>$comment</q><br>";
+                }
 
                 if ($name != "") {
                     echo "$name<br>";
