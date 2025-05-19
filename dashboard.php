@@ -40,7 +40,8 @@ if ($conn->connect_error) {
                 <tbody>
                 <?php
 
-                $select = "SELECT id, name, wherefrom, comment, date FROM Feedback";
+                $select = "SELECT id, name, wherefrom, comment, date FROM Feedback
+                           ORDER BY id DESC";
                 $result = $conn->query($select);
 
                 if ($result->num_rows > 0){
