@@ -91,3 +91,28 @@ input[type=submit]:hover {
 q {
     font-style: italic;
 }
+
+/* Table styling */
+
+table, th, td {
+    border: solid 2px black;
+}
+
+th, td {
+    padding: 0.2rem 0.5rem;
+}
+
+th {
+    background-color: black;
+    color: white;
+    border-inline-color: white;
+}
+
+tr:nth-child(even) {
+    background-color: var(--light-orange);
+}
+
+table {
+    border-collapse: collapse;
+    margin-block: 1rem;
+}
