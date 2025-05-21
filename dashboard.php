@@ -11,6 +11,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+function InsertDeleteButton(int $id) : void {
+    echo "<td>";
+    echo "<input type=submit name=$id value='Delete'>";
+    echo "</td>";
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,6 +33,8 @@ if ($conn->connect_error) {
             <img src="assets/images/MDMLogo.png" alt="Motueka District Museum Logo">
         </header>
         <main>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
+                  method="post">
             <table>
                 <thead>
                     <tr>
@@ -35,10 +43,18 @@ if ($conn->connect_error) {
                         <th>From</th>
                         <th>Comment</th>
                         <th>Date</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
+
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $to_delete = intval(array_keys($_POST)[0]);
+                    $delete = "DELETE FROM Feedback WHERE id = $to_delete";
+
+                    $conn->query($delete);
+                }
 
                 $select = "SELECT id, name, wherefrom, comment, date FROM Feedback
                            ORDER BY id DESC";
@@ -53,6 +69,7 @@ if ($conn->connect_error) {
                         echo "<td>" . $row["wherefrom"] . "</td>";
                         echo "<td>" . $row["comment"] . "</td>";
                         echo "<td>" . $row["date"] . "</td>";
+                        InsertDeleteButton($row["id"]);
                         echo "</tr>";
                     }
                 }
@@ -62,6 +79,7 @@ if ($conn->connect_error) {
                 ?>
                 </tbody>
             </table>
+            </form>
         </main>
     </body>
 </html>

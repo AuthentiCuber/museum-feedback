@@ -108,6 +108,15 @@ th {
     border-inline-color: white;
 }
 
+th:is(:first-child, :last-child) {
+    border: none;
+}
+
+td > input[type=submit] {
+    margin: auto;
+    width: fit-content;
+}
+
 tr:nth-child(even) {
     background-color: var(--light-orange);
 }
