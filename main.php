@@ -26,24 +26,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// $create_table = "
-// IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'museumdb')
-// BEGIN
-//     CREATE TABLE Feedback (
-//     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-//     name VARCHAR(30),
-//     wherefrom VARCHAR(30),
-//     comment VARCHAR(100) NOT NULL,
-//     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-//     )
-// END";
-
-// if ($conn->query($create_table) === TRUE) {
-//     echo "Table Feedback created successfully";
-// } else {
-//     echo "Error creating table: " . $conn->error;
-// }
-
 ?>
 <!DOCTYPE html>
 <html>
