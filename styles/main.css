@@ -60,7 +60,7 @@ main {
     width: 60%;
 }
 
-img {
+header > img {
     height: calc(var(--header-height) * 0.9);
     filter: invert();
 }
@@ -81,11 +81,11 @@ input[type=submit] {
     cursor: pointer;
 
     transition: color 400ms ease, background-color 400ms ease;
-}
 
-input[type=submit]:hover {
-    color: black;
-    background-color: white;
+    &:hover {
+        color: black;
+        background-color: white;
+    }
 }
 
 q {
@@ -106,10 +106,10 @@ th {
     background-color: black;
     color: white;
     border-inline-color: white;
-}
 
-th:is(:first-child, :last-child) {
-    border: none;
+    &:is(:first-child, :last-child) {
+        border: none;
+    }
 }
 
 td > input[type=submit] {
