@@ -38,9 +38,9 @@ if ($conn->connect_error) {
             <img src="assets/images/MDMLogo.png" alt="Motueka District Museum Logo">
         </header>
         <main>
-            <h1>Visitor Feedback</h1>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" 
                   method="post">
+                <h1>Visitor Feedback</h1>
                 <label for="name">What is your name?</label>
                 <input type="text" id="name" name="name">
 
