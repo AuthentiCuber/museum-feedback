@@ -1,5 +1,7 @@
 <?php
 
+require "dbdetails.php";
+
 $name = "";
 $wherefrom = "";
 $comment = "";
@@ -14,11 +16,6 @@ function cleanInput(string $data) : string {
     $sanitised = htmlspecialchars($stripped);
     return $sanitised;
 }
-
-$server_name = "localhost";
-$username = "root";
-$password = "";
-$db_name = "museumdb";
 
 $conn = new mysqli($server_name, $username, $password, $db_name);
 
