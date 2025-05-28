@@ -42,10 +42,10 @@ if ($conn->connect_error) {
                   method="post">
                 <h1>Visitor Feedback</h1>
                 <label for="name">What is your name?</label>
-                <input type="text" id="name" name="name">
+                <input type="text" id="name" name="name" autocomplete="off">
 
                 <label for="wherefrom">Where are you from?</label>
-                <input type="text" id="wherefrom" name="wherefrom">
+                <input type="text" id="wherefrom" name="wherefrom" autocomplete="off">
 
                 <label for="comment">Let us know what you thought of your visit!</label>
                 <textarea id="comment" name="comment" rows="4" cols="40"></textarea>
