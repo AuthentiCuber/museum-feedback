@@ -47,6 +47,7 @@ function InsertDeleteButton(int $id) : void {
                 <?php
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // when any delete clicked, get corresponding id
                     $to_delete = intval(array_keys($_POST)[0]);
                     $delete = "DELETE FROM Feedback WHERE id = $to_delete";
 
@@ -66,6 +67,8 @@ function InsertDeleteButton(int $id) : void {
                         echo "<td>" . $row["wherefrom"] . "</td>";
                         echo "<td>" . $row["comment"] . "</td>";
                         echo "<td>" . $row["date"] . "</td>";
+                        // associate each delete button with the id
+                        // of the corresponding entry
                         InsertDeleteButton($row["id"]);
                         echo "</tr>";
                     }
