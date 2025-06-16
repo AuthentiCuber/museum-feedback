@@ -58,7 +58,7 @@ function InsertDeleteButton(int $id) : void {
                            ORDER BY id DESC";
                 $result = $conn->query($select);
 
-                if ($result->num_rows > 0){
+                if ($result->num_rows > 0) {
                     // iterate through rows
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
